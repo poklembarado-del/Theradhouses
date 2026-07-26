@@ -58,15 +58,62 @@ Until then, the site can still be published by running the workflow by hand from
 4. Leave **Enforce HTTPS** unchecked for now — GitHub greys it out until DNS
    resolves and it has issued a certificate. Come back and tick it in step 3 below.
 
-### 2. Point DNS at GitHub (at Hostcreators)
+### 2. Point DNS at GitHub
 
-Log in to Hostcreators and open the DNS / nameserver management for
-`theradhouses.eu` (in a DirectAdmin or cPanel panel this is usually "DNS
-Management" or "DNS Zone Editor"; in their own customer portal, look for
-"Domains → theradhouses.eu → DNS").
+**Current state of the domain (checked against the live `.eu` registry):
+`theradhouses.eu` is not delegated at all — it returns `NXDOMAIN`, and the only
+thing answering for it is the registry's own `si.dns.eu`.** No nameservers are
+set, so there is no zone, no records, and no mail routing to preserve. Nothing
+below can break an existing service.
 
-This only works if the domain uses **Hostcreators' own nameservers**. If the
-nameservers were delegated elsewhere, make these records there instead.
+GitHub Pages is not a DNS host — it has no nameservers to hand out. It needs `A`
+and `CNAME` **records**, which have to live in a DNS zone somewhere. So the first
+question is where that zone will be.
+
+#### 2a. Where the zone lives
+
+Hostcreators' panel exposes only four nameserver fields (`ns1`–`ns4`). That is the
+registrar half of the job: it decides *who* answers DNS for the domain, not *what*
+they answer. Two ways forward.
+
+**Path A — keep DNS at Hostcreators.** They do run their own nameservers. Fill the
+four fields with:
+
+```
+ns1.hostcreators.eu
+ns2.hostcreators.eu
+ns3.hostcreators.eu
+ns4.hostcreators.eu
+```
+
+Save, then look for a **DNS / zone editor** in the panel. If one appears, create
+the records in 2b there and you are done — no third party involved. Many
+registrars only unlock the zone editor once the domain points at their own
+nameservers, so this is worth trying first. If no editor appears (common when the
+domain was bought without a hosting package), ask their support whether DNS
+management is included — and if it isn't, take path B.
+
+**Path B — delegate DNS to a free DNS host.** Put *their* nameservers in the
+`ns1`–`ns4` fields instead, then create the records in 2b in that provider's panel.
+Any of these work; pick one:
+
+| Provider | Nameservers to enter | Notes |
+| --- | --- | --- |
+| **Cloudflare** (recommended) | the two it assigns you, e.g. `dana.ns.cloudflare.com` / `rex.ns.cloudflare.com` | Free. Best UI and docs. Add the domain at dash.cloudflare.com and it tells you your exact pair — they are per-account, don't copy the example. Leave `ns3`/`ns4` blank. |
+| **deSEC** | `ns1.desec.io`, `ns2.desec.org` | Free, EU non-profit, DNSSEC on by default. Good fit for a `.eu` domain if you'd rather keep DNS in Europe. Leave `ns3`/`ns4` blank. |
+| **Hurricane Electric** | `ns1.he.net` … `ns5.he.net` | Free, no frills, and fills all four fields exactly. |
+
+Only two nameservers is completely normal — leaving `ns3`/`ns4` empty is fine.
+
+> **If you use Cloudflare**, set the records to **DNS only** (grey cloud, not
+> orange) at first. GitHub cannot validate the domain or issue its certificate
+> through Cloudflare's proxy, and proxying with SSL/TLS mode "Flexible" causes a
+> redirect loop. Once the site is live on HTTPS you may switch the proxy on,
+> provided SSL/TLS mode is **Full (strict)**.
+
+#### 2b. The records to create
+
+Whichever panel you land in, create these.
 
 **Apex domain `theradhouses.eu` — four A records** (host/name field: `@`, or blank,
 or `theradhouses.eu.` depending on the panel):
@@ -96,13 +143,14 @@ or `theradhouses.eu.` depending on the panel):
 (Note the trailing dot; some panels want it, some add it for you. GitHub then
 redirects `www.theradhouses.eu` → `theradhouses.eu` because `CNAME` holds the apex.)
 
-**Delete any conflicting records first:** a pre-existing `A`/`AAAA` on `@`, a
-`CNAME` on `www`, or a parking/redirect record pointing at a Hostcreators holding
-page. Two sets of A records on the apex will make the site load intermittently.
+**Delete any conflicting records the panel creates for you:** some hosts drop in a
+default `A` record on `@` pointing at a parking page, or a `CNAME` on `www`. Two
+sets of A records on the apex will make the site load intermittently.
 
-Leave `MX` and `TXT` records alone — those are email and domain verification, and
-GitHub Pages doesn't touch them. **GitHub Pages does not host email**; if mail for
-`@theradhouses.eu` runs at Hostcreators it keeps working unchanged.
+**GitHub Pages does not host email.** The domain has no `MX` records today, so
+nothing breaks — but it also means `hello@theradhouses.eu` will not receive mail
+until you set up a mailbox somewhere and add its `MX` (and `SPF`/`DKIM` `TXT`)
+records in whichever zone you chose above. That is separate from the website.
 
 The IPs above were verified against GitHub's live DNS. If a record is ever
 rejected, cross-check the current list at
@@ -113,10 +161,16 @@ rejected, cross-check the current list at
 DNS usually takes 15–60 minutes and can take up to 24 hours. Check with:
 
 ```bash
+dig +short NS theradhouses.eu       # expect the nameservers you entered — check this first
 dig +short theradhouses.eu          # expect the four 185.199.x.153 addresses
 dig +short www.theradhouses.eu      # expect poklembarado-del.github.io.
 curl -sI https://theradhouses.eu    # expect HTTP/2 200
 ```
+
+Work through those in order. If the `NS` line is empty the delegation hasn't taken
+effect yet and the rest cannot possibly work — that's the registrar half (step 2a),
+and it is the part that has never been set for this domain. Only once `NS` answers
+does it make sense to debug the `A` records (step 2b).
 
 Then go back to **Settings → Pages** and tick **Enforce HTTPS**. GitHub issues a
 free Let's Encrypt certificate once DNS checks out; if the checkbox is still
