@@ -12,6 +12,7 @@ index.html                     home page
 assets/styles.css              all styling
 assets/favicon.svg             favicon
 CNAME                          custom domain — GitHub Pages reads this file
+scripts/check-dns.py           verifies the live DNS setup (see step 3)
 robots.txt, sitemap.xml        search engines
 .nojekyll                      publish files as-is, skip Jekyll processing
 ```
@@ -172,7 +173,27 @@ rejected, cross-check the current list at
 
 ### 3. Verify, then force HTTPS
 
-DNS usually takes 15–60 minutes and can take up to 24 hours. Check with:
+Control panels are an awkward place to audit a zone — records are paginated, the
+Host column is ambiguous, and a leftover parking record looks just like one you
+added. So check from the outside instead:
+
+```bash
+python3 scripts/check-dns.py
+```
+
+It reads the zone **directly from the authoritative nameservers** — what the
+internet actually sees, with no resolver caching and no panel rendering in the way —
+and reports, in order: whether the domain is delegated at all, which of the four
+GitHub IPs are present, any *extra* A/AAAA records that shouldn't be there (the
+parking-record conflict), whether `www` is a CNAME to the right target, whether a
+doubled `theradhouses.eu.theradhouses.eu` name got created, and whether the site
+answers on HTTPS. It exits non-zero while anything is wrong, and needs no
+dependencies beyond Python 3.
+
+Run it after each change to the zone. If it says the domain has no nameservers,
+nothing else can be diagnosed yet — that's step 2a, and it gates everything.
+
+The equivalent by hand, if you'd rather:
 
 ```bash
 dig +short NS theradhouses.eu       # expect the nameservers you entered — check this first
@@ -182,9 +203,9 @@ curl -sI https://theradhouses.eu    # expect HTTP/2 200
 ```
 
 Work through those in order. If the `NS` line is empty the delegation hasn't taken
-effect yet and the rest cannot possibly work — that's the registrar half (step 2a),
-and it is the part that has never been set for this domain. Only once `NS` answers
-does it make sense to debug the `A` records (step 2b).
+effect yet and the rest cannot possibly work.
+
+DNS usually takes 15–60 minutes and can take up to 24 hours.
 
 Then go back to **Settings → Pages** and tick **Enforce HTTPS**. GitHub issues a
 free Let's Encrypt certificate once DNS checks out; if the checkbox is still
