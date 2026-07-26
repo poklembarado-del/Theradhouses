@@ -115,6 +115,20 @@ Only two nameservers is completely normal — leaving `ns3`/`ns4` empty is fine.
 
 Whichever panel you land in, create these.
 
+**Filling in the "Host" / "Name" field.** It takes the part of the name to the left
+of the domain, not the whole thing: `@` means the domain itself
+(`theradhouses.eu`), and `www` means `www.theradhouses.eu` — the panel appends the
+domain for you. Check which convention this panel uses by looking at the `SOA`/`NS`
+rows it created automatically: if their Host column reads `@` or is blank, use `@`;
+if it reads `theradhouses.eu.` with a trailing dot, this panel wants fully-qualified
+names, so enter `theradhouses.eu.` and `www.theradhouses.eu.` instead.
+
+Do not type `theradhouses.eu` without a trailing dot into a Host field that appends
+the domain — that silently creates `theradhouses.eu.theradhouses.eu`, which resolves
+nowhere and looks correct in the records table. `@` is the safer choice when unsure.
+
+Each A record is its own row: four rows, all with Host `@`, one IP each.
+
 **Apex domain `theradhouses.eu` — four A records** (host/name field: `@`, or blank,
 or `theradhouses.eu.` depending on the panel):
 
