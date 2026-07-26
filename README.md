@@ -35,6 +35,18 @@ python3 -m http.server 8000
 Two halves: turn on Pages here on GitHub, and point DNS at it from Hostcreators.
 Do the GitHub half first — the DNS half is what takes time to propagate.
 
+### 0. Make sure `main` exists
+
+The repository was empty before this commit, so GitHub made the branch this work
+landed on the default branch — there is no `main` yet, and the deploy workflow only
+triggers on pushes to `main`. Fix it either way:
+
+- **Settings → General → Default branch → rename** the current default to `main`, or
+- create `main` from this branch and set it as the default.
+
+Until then, the site can still be published by running the workflow by hand from the
+**Actions** tab (**Deploy site to GitHub Pages → Run workflow**).
+
 ### 1. Enable GitHub Pages (one-time, in this repo)
 
 1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
