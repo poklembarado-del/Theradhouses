@@ -24,7 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # enablement lets the first run turn Pages on itself (source: GitHub
+      # Actions) instead of needing someone to flip it in Settings first.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       # The site is plain static files, so the repo root is the artifact.
       - uses: actions/upload-pages-artifact@v3
