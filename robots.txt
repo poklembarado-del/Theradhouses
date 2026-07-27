@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lipahouse.sk/sitemap.xml
+Sitemap: https://radhouses.eu/sitemap.xml

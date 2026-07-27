@@ -3,23 +3,23 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://lipahouse.sk/</loc>
+    <loc>https://radhouses.eu/</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://lipahouse.sk/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://lipahouse.sk/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://lipahouse.sk/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://radhouses.eu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://radhouses.eu/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://radhouses.eu/"/>
   </url>
 
   <url>
-    <loc>https://lipahouse.sk/en/</loc>
+    <loc>https://radhouses.eu/en/</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://lipahouse.sk/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://lipahouse.sk/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://lipahouse.sk/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://radhouses.eu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://radhouses.eu/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://radhouses.eu/"/>
   </url>
 
 </urlset>

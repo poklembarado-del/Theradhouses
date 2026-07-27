@@ -1,10 +1,10 @@
-/* LIPA Tiny Houses — site behaviour. No dependencies. */
+/* Radhouses — site behaviour. No dependencies. */
 (function () {
   'use strict';
 
   /* ---------- theme toggle ---------- */
   var root = document.documentElement;
-  var STORE = 'lipa-theme';
+  var STORE = 'radhouses-theme';
 
   function systemDark() {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
