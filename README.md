@@ -48,6 +48,11 @@ Until then the site can still be published by hand from the **Actions** tab
 
 ### 2. Enable Pages
 
+This step has to be done by hand, once, by someone with admin on the repository. The
+workflow cannot do it for you: creating a Pages site requires admin rights, and
+`GITHUB_TOKEN` does not have them even with `pages: write`. Until it is done, every run
+fails at `configure-pages` with *"Get Pages site failed … Not Found"*.
+
 1. **Settings → Pages → Build and deployment → Source: GitHub Actions.** Not "Deploy from
    a branch" — this repo deploys through the workflow.
 2. **Settings → Pages → Custom domain** should read `radhouses.eu`, picked up from `CNAME`.
