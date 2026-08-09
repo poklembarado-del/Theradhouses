@@ -107,9 +107,11 @@ changed in the Formspree dashboard, not here.
 
 The two forms share one field set — `name`, `email`, `phone`, `model`, `message` — so
 submissions read the same whichever language they came from. `email` is used as the
-Reply-To, so replying in Gmail goes back to the enquirer. `_gotcha` is a honeypot: it is
-positioned offscreen and hidden from assistive technology, and Formspree discards any
-submission that fills it.
+Reply-To, so replying in Gmail goes back to the enquirer.
+
+Spam filtering is left to Formspree's own Formshield. A `_gotcha` honeypot was tried and
+removed: browsers do not reliably honour `autocomplete="off"`, so autofill can populate a
+hidden field and get a real enquiry classified as spam.
 
 Do not set Formspree to send *from* an `@radhouses.eu` address. The domain publishes
 `DMARC p=reject`, so mail claiming to be from it but sent by Formspree would be rejected
