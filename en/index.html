@@ -519,6 +519,7 @@
            "email" below is used as Reply-To). Until it is replaced the form will not send. -->
         <form name="enquiry" method="post" action="https://formspree.io/f/YOUR_FORM_ID" novalidate>
           <input type="hidden" name="_subject" value="New enquiry from radhouses.eu">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
           <div class="form-field">
             <label for="f-name">Name</label>
             <input type="text" id="f-name" name="name" autocomplete="name" required>

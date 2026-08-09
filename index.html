@@ -529,9 +529,10 @@
            "email" below is used as Reply-To). Until it is replaced the form will not send. -->
         <form name="dopyt" method="post" action="https://formspree.io/f/YOUR_FORM_ID" novalidate>
           <input type="hidden" name="_subject" value="Nový dopyt z radhouses.eu">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
           <div class="form-field">
             <label for="f-name">Meno a priezvisko</label>
-            <input type="text" id="f-name" name="meno" autocomplete="name" required>
+            <input type="text" id="f-name" name="name" autocomplete="name" required>
           </div>
           <div class="form-field">
             <label for="f-email">E-mail</label>
@@ -539,7 +540,7 @@
           </div>
           <div class="form-field">
             <label for="f-phone">Telefón <span style="font-weight:400;color:var(--text-soft)">(nepovinné)</span></label>
-            <input type="tel" id="f-phone" name="telefon" autocomplete="tel">
+            <input type="tel" id="f-phone" name="phone" autocomplete="tel">
           </div>
           <div class="form-field">
             <label for="f-model">O čo máte záujem</label>
@@ -554,7 +555,7 @@
           </div>
           <div class="form-field">
             <label for="f-msg">Správa</label>
-            <textarea id="f-msg" name="sprava" placeholder="Kde by dom stál? Máte už pozemok?"></textarea>
+            <textarea id="f-msg" name="message" placeholder="Kde by dom stál? Máte už pozemok?"></textarea>
           </div>
           <button class="btn btn-primary" type="submit">Odoslať dopyt</button>
           <p style="font-size:.8rem;color:var(--text-soft);margin-top:1rem">
