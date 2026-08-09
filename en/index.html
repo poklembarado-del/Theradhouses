@@ -514,10 +514,9 @@
       </p>
 
       <div class="contact-grid">
-        <!-- Replace YOUR_FORM_ID with the endpoint id from formspree.io (Formspree emails
-           submissions straight to the address registered on the form; the field named
-           "email" below is used as Reply-To). Until it is replaced the form will not send. -->
-        <form name="enquiry" method="post" action="https://formspree.io/f/YOUR_FORM_ID" novalidate>
+        <!-- Formspree endpoint. The field named "email" below becomes the Reply-To,
+             so replying in Gmail goes straight back to the enquirer. -->
+        <form name="enquiry" method="post" action="https://formspree.io/f/xgawogoy" novalidate>
           <input type="hidden" name="_subject" value="New enquiry from radhouses.eu">
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
           <div class="form-field">

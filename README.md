@@ -94,14 +94,26 @@ records alone — that is the mail setup, unrelated to Pages.
 
 ## Before it is really live
 
-1. **Wire up the contact form.** Both forms post to
-   `https://formspree.io/f/YOUR_FORM_ID` — replace that with a real endpoint from
-   [formspree.io](https://formspree.io) and submissions will be emailed to the address you
-   register. The `email` field is used as Reply-To.
-2. **Fill in the real contact details** — phone, email, IČO/DIČ in the footer of both pages.
+1. **Fill in the real contact details** — phone, email, IČO/DIČ in the footer of both pages.
    They are currently zeroed placeholders.
-3. **Check the prices** against the financial model in the source repository.
-4. **Reshoot two photo gaps** — see [`images/README.md`](images/README.md).
+2. **Check the prices** against the financial model in the source repository.
+3. **Reshoot two photo gaps** — see [`images/README.md`](images/README.md).
+
+## The contact form
+
+Both pages post to the Formspree endpoint `https://formspree.io/f/xgawogoy`, which emails
+submissions to `poklembarado@gmail.com`. Recipients, validation and spam settings are
+changed in the Formspree dashboard, not here.
+
+The two forms share one field set — `name`, `email`, `phone`, `model`, `message` — so
+submissions read the same whichever language they came from. `email` is used as the
+Reply-To, so replying in Gmail goes back to the enquirer. `_gotcha` is a honeypot: it is
+positioned offscreen and hidden from assistive technology, and Formspree discards any
+submission that fills it.
+
+Do not set Formspree to send *from* an `@radhouses.eu` address. The domain publishes
+`DMARC p=reject`, so mail claiming to be from it but sent by Formspree would be rejected
+outright.
 
 ## Deploying changes
 
