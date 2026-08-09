@@ -109,13 +109,14 @@ The two forms share one field set — `name`, `email`, `phone`, `model`, `messag
 submissions read the same whichever language they came from. `email` is used as the
 Reply-To, so replying in Gmail goes back to the enquirer.
 
-`_gotcha` is a Formspree honeypot. It sits offscreen, is skipped by tabbing and hidden
-from assistive technology, so a real visitor never fills it and bots that complete every
-field are classified as spam.
+Spam filtering is left entirely to Formspree's Formshield.
 
-**When testing the form, leave `_gotcha` alone.** Filling it -- via devtools or by editing
-the markup -- is precisely the bot signal, and the submission lands in Formspree's spam
-folder rather than your inbox. That is the honeypot working, not a fault.
+**Do not add a `_gotcha` honeypot here.** One was tried and removed: it was hidden with
+`position:absolute;left:-9999px`, which Chrome's autofill still treats as a visible field,
+so autofill populated it and Formspree classified genuine enquiries as spam. A missed spam
+message costs nothing; a silently discarded customer enquiry costs a sale. If a honeypot is
+ever reintroduced it must use `display:none`, which autofill skips -- but Formshield already
+covers this, so the field earns no protection worth the risk.
 
 Do not set Formspree to send *from* an `@radhouses.eu` address. The domain publishes
 `DMARC p=reject`, so mail claiming to be from it but sent by Formspree would be rejected
