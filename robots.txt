@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://theradhouses.eu/sitemap.xml
+Sitemap: https://radhouses.eu/sitemap.xml

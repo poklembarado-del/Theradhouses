@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check that theradhouses.eu DNS is set up correctly for GitHub Pages.
+"""Check that radhouses.eu DNS is set up correctly for GitHub Pages.
 
 Reads the zone straight from the authoritative nameservers, so it shows what the
 internet actually sees rather than what a control panel claims. Flags missing
@@ -14,7 +14,7 @@ import socket
 import struct
 import sys
 
-DOMAIN = sys.argv[1] if len(sys.argv) > 1 else "theradhouses.eu"
+DOMAIN = sys.argv[1] if len(sys.argv) > 1 else "radhouses.eu"
 PAGES_HOST = "poklembarado-del.github.io"
 
 EXPECTED_A = {

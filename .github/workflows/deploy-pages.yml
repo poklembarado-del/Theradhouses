@@ -24,6 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Pages must already be enabled for the repo (see README step 2). The
+      # enablement option cannot do it: creating a Pages site needs admin
+      # rights, which GITHUB_TOKEN does not have even with pages: write.
       - uses: actions/configure-pages@v5
 
       # The site is plain static files, so the repo root is the artifact.

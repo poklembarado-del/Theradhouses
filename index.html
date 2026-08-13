@@ -1,42 +1,743 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Theradhouses</title>
-    <meta name="description" content="Theradhouses — theradhouses.eu" />
-    <link rel="canonical" href="https://theradhouses.eu/" />
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Theradhouses" />
-    <meta property="og:description" content="Theradhouses — theradhouses.eu" />
-    <meta property="og:url" content="https://theradhouses.eu/" />
-    <meta name="twitter:card" content="summary" />
+<title>Drevené domy do 50 m² zastavanej plochy | Radhouses</title>
+<meta name="description" content="Drevostavby, ktoré sa vojdú do limitu drobnej stavby — bez stavebného konania, len ohlásenie. Kuchyňa, kúpeľňa, podlahy aj vykurovanie v cene. Od 39 900 €.">
+<link rel="canonical" href="https://radhouses.eu/">
 
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/assets/styles.css" />
-  </head>
-  <body>
-    <main class="page">
-      <header class="masthead">
-        <h1 class="wordmark">Theradhouses</h1>
-        <p class="domain">theradhouses.eu</p>
-      </header>
+<link rel="alternate" hreflang="sk" href="https://radhouses.eu/">
+<link rel="alternate" hreflang="en" href="https://radhouses.eu/en/">
+<link rel="alternate" hreflang="x-default" href="https://radhouses.eu/">
 
-      <section class="lede">
-        <p>The site is being built. Come back soon.</p>
-      </section>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sk_SK">
+<meta property="og:site_name" content="Radhouses — Drevené domy">
+<meta property="og:title" content="Drevené domy do 50 m² zastavanej plochy — od 39 900 €">
+<meta property="og:description" content="Drevostavby v režime drobnej stavby — len ohlásenie, žiadne stavebné konanie. Všetko dokončené, v jednej cene.">
+<meta property="og:url" content="https://radhouses.eu/">
+<meta property="og:image" content="https://radhouses.eu/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
-      <footer class="footer">
-        <p>
-          <a href="mailto:hello@theradhouses.eu">hello@theradhouses.eu</a>
-        </p>
-        <p class="fineprint">&copy; <span id="year">2026</span> Theradhouses</p>
-      </footer>
-    </main>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+<a class="skip" href="#main">Preskočiť na obsah</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Radhouses — domov">
+      <svg viewBox="0 0 40 40" aria-hidden="true" fill="none">
+        <path d="M7 20 20 9l13 11v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"
+              stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      </svg>
+      <span>
+        <span class="brand-name">Radhouses</span>
+        <span class="brand-sub">Drevené domy</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+
+    <nav class="nav" id="nav" aria-label="Hlavná navigácia">
+      <a href="#modely">Modely</a>
+      <a href="#cena">Čo je v cene</a>
+      <a href="#povolenie">Povolenie</a>
+      <a href="#investicia">Investícia</a>
+      <a href="#vzorovy-dom">Vzorový dom</a>
+      <a href="#kontakt">Kontakt</a>
+      <span class="nav-tools">
+        <span class="lang">
+          <a href="/" aria-current="true" hreflang="sk">SK</a>
+          <a href="/en/" hreflang="en">EN</a>
+        </span>
+        <button class="theme-toggle" data-label-dark="Prepnúť na tmavý režim" data-label-light="Prepnúť na svetlý režim">☾</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Drevostavba · Solár · Na kľúč</p>
+          <h1>Malý dom, ktorý je <em>naozaj hotový</em>.</h1>
+          <p class="lede">
+            Bežná drevostavba na kľúč sa odovzdáva ako holodom — bez kuchyne, podláh,
+            obkladov a vykurovania. Tie doplatíte zvlášť. My staviame inak: jedna cena,
+            v ktorej je úplne všetko. Nasťahujete sa v deň odovzdania.
+          </p>
+
+          <div class="price-flag">
+            <span class="amount">od 39 900 € bez DPH</span>
+            <span class="note">Všetky modely do 50 m² zastavanej plochy · len ohlásenie</span>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#modely">Pozrieť modely</a>
+            <a class="btn btn-outline" href="#vzorovy-dom">Prespať vo vzorovom dome</a>
+          </div>
+        </div>
+
+        <img src="/images/hero-exterior.webp" width="1200" height="900" class="ph-img ph-hero"
+             alt="Vzorový dom Radhouses 39 za súmraku — drevená fasáda, terasa a rozsvietený interiér">
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="wrap">
+        <div class="trust-item"><strong>0 €</strong><span>príplatkov za kuchyňu, kúpeľňu a terasu</span></div>
+        <div class="trust-item"><strong>5 rokov</strong><span>záruka na konštrukciu</span></div>
+        <div class="trust-item"><strong>30 dní</strong><span>ohlásenie drobnej stavby — potom platí za schválené</span></div>
+        <div class="trust-item"><strong>39 m²</strong><span>zastavaná plocha vzorového domu — a 65 m² na bývanie</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE WEDGE ============ -->
+  <section id="cena" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Prečo sme iní</p>
+      <h2>Porovnajte si to, čo sa bežne neporovnáva</h2>
+      <p class="lede">
+        Slovenské stavebné firmy odovzdávajú dom najčastejšie ako holodom — steny, strecha,
+        okná. Všetko ostatné je príplatok, ktorý sa objaví až v priebehu stavby. A stavebné
+        konanie trvá mesiace. Nižšie je bežný rozpočet domu s rovnakou obytnou plochou.
+      </p>
+
+      <div class="compare">
+        <div class="compare-card them">
+          <span class="tag">Bežná stavba na kľúč, 65 m²</span>
+          <h3>Holodom + dokončenie</h3>
+          <ul class="ledger">
+            <li><span>Holodom (65 m² × 1 100 €)</span> <span class="amt">71 500 €</span></li>
+            <li><span>Kuchyňa</span> <span class="amt add">+ 6 000 €</span></li>
+            <li><span>Kúpeľňa</span> <span class="amt add">+ 5 000 €</span></li>
+            <li><span>Podlahy a obklady</span> <span class="amt add">+ 4 500 €</span></li>
+            <li><span>Vykurovanie</span> <span class="amt add">+ 6 000 €</span></li>
+            <li><span>Projekt a stavebné konanie</span> <span class="amt add">+ 4 000 €</span></li>
+            <li><span>Fotovoltika</span> <span class="amt add">+ 8 500 €</span></li>
+          </ul>
+          <div class="ledger-total"><span>Reálna cena</span> <span>105 500 € +</span></div>
+          <p style="font-size:.86rem;color:var(--text-soft);margin:1rem 0 0">
+            …a 12 až 18 mesiacov, kým sa nasťahujete.
+          </p>
+        </div>
+
+        <div class="compare-card us">
+          <span class="tag">Radhouses 39</span>
+          <h3>Jedna cena. Všetko v nej.</h3>
+          <ul class="ledger">
+            <li><span>Drevostavbová konštrukcia</span> <span class="amt inc">v cene</span></li>
+            <li><span>Kuchyňa so spotrebičmi</span> <span class="amt inc">v cene</span></li>
+            <li><span>Kúpeľňa so sprchou a WC</span> <span class="amt inc">v cene</span></li>
+            <li><span>Podlahy, obklady, stolárka</span> <span class="amt inc">v cene</span></li>
+            <li><span>Vykurovanie</span> <span class="amt inc">v cene</span></li>
+            <li><span>Podklady k ohláseniu stavby</span> <span class="amt inc">v cene</span></li>
+            <li><span>Príprava na fotovoltiku</span> <span class="amt inc">v cene</span></li>
+          </ul>
+          <div class="ledger-total"><span>Cena</span> <span>109 900 €</span></div>
+          <p style="font-size:.86rem;color:var(--text-soft);margin:1rem 0 0">
+            Bez DPH. Štyri mesiace od podpisu po kľúče.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODELS ============ -->
+  <section id="modely">
+    <div class="wrap">
+            <p class="eyebrow">Modely</p>
+      <h2>Tri veľkosti — všetky do 50 m²</h2>
+      <p class="lede">
+        Modely sú pomenované podľa <strong>zastavanej plochy</strong> — čísla, ktoré rozhoduje
+        na stavebnom úrade. Všetky tri sa zmestia do limitu drobnej stavby, takže žiadny
+        z nich nevyžaduje stavebné konanie.
+      </p>
+
+      <div class="models">
+
+        <article class="model">
+          <div class="model-wrap">
+            <img src="/images/model-20.webp" width="1000" height="1000" class="ph-img"
+                 alt="Kuchyňa s vitrážovým oknom a kamennou pracovnou doskou v dome Radhouses">
+          </div>
+          <div class="model-body">
+            <h3>Radhouses 20</h3>
+            <p class="meta">20 m² zastavanej plochy · bez povolenia aj bez ohlásenia</p>
+            <p>Záhradné štúdio, kancelária alebo hosťovská izba. Bez povolenia aj bez
+              ohlásenia, ak stojí najmenej 2 m od hranice pozemku a dopĺňa existujúci dom.</p>
+            <p class="price"><b>39 900 €</b><span>bez DPH · 49 077 € s DPH</span></p>
+          </div>
+        </article>
+
+        <article class="model">
+          <div class="model-wrap">
+            <img src="/images/model-30.webp" width="1000" height="1000" class="ph-img"
+                 alt="Vstupná fasáda domu Radhouses s dreveným prístreškom nad dverami">
+          </div>
+          <div class="model-body">
+            <h3>Radhouses 30</h3>
+            <p class="meta">30 m² zastavanej plochy · drobná stavba, ohlásenie</p>
+            <p>Prízemný dom so spálňou, kúpeľňou a otvoreným obytným priestorom. Rieši sa
+              ohlásením — ak úrad do 30 dní nekoná, overovacia doložka platí za vydanú.</p>
+            <p class="price"><b>59 900 €</b><span>bez DPH · 73 677 € s DPH</span></p>
+          </div>
+        </article>
+
+        <article class="model flag">
+          <div class="model-wrap">
+            <span class="badge">Vzorový dom</span>
+            <img src="/images/model-39.webp" width="1200" height="1200" class="ph-img"
+                 alt="Vikiere, vežička s hodinami a fotovoltické panely na streche domu Radhouses 39">
+          </div>
+          <div class="model-body">
+            <h3>Radhouses 39</h3>
+            <p class="meta">39 m² zastavanej plochy · ~65 m² úžitkovej · ohlásenie</p>
+            <p>Dom, v ktorom sami bývame. Otvorené prízemie s kuchyňou a obývačkou, podkrovná
+              spálňa s vikiermi, fotovoltika na streche. Zastavaná plocha 39 m² — a napriek
+              tomu 65 m² na bývanie, pretože podkrovie sa do zastavanej plochy nepočíta.</p>
+            <p class="price"><b>109 900 €</b><span>bez DPH · 135 177 € s DPH</span></p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INCLUDED / NOT INCLUDED ============ -->
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Úplný zoznam</p>
+      <h2>Čo je v cene — a čo úprimne nie je</h2>
+      <p class="lede">
+        Druhý zoznam je rovnako dôležitý ako prvý. Radšej vám to povieme teraz než v ponuke.
+      </p>
+
+      <div class="two-col">
+        <div>
+          <h3>V cene každého domu</h3>
+          <ul class="checklist yes">
+            <li>Drevostavbová nosná konštrukcia</li>
+            <li>Izolácia, fasáda a strecha</li>
+            <li>Trojsklá, okná a dvere</li>
+            <li>Kompletná kuchyňa vrátane spotrebičov</li>
+            <li>Kompletná kúpeľňa so sprchou a WC</li>
+            <li>Vykurovanie</li>
+            <li>Kompletná elektroinštalácia a rozvody vody</li>
+            <li>Podlahy, obklady a interiérové stolárske práce</li>
+            <li>Príprava na fotovoltiku (pri modeli Off-Grid celá zostava s batériou)</li>
+            <li>Doprava a osadenie do 150 km</li>
+            <li>Technické podklady k ohláseniu drobnej stavby</li>
+            <li>Uvedenie do prevádzky a odovzdanie</li>
+            <li>5-ročná záruka na konštrukciu, 2 roky na zariadenie</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>V cene nie je</h3>
+          <ul class="checklist no">
+            <li>Pozemok</li>
+            <li>Terénne úpravy, základová doska alebo pätky</li>
+            <li>Prípojky inžinierskych sietí, ak ich chcete</li>
+            <li>Doprava nad 150 km (účtujeme podľa km, cenu poviem vopred)</li>
+            <li>Správne poplatky za ohlásenie drobnej stavby</li>
+          </ul>
+
+          <div class="callout">
+            <p><strong>Prečo to zverejňujeme.</strong> Pretože tieto položky sa v tomto odvetví
+              zvyknú objaviť až v momente, keď ste už podpísali. Chceme, aby ste našu cenu vedeli
+              porovnať s inou skôr, než niekomu zavoláte.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEGAL ROUTES — SEO cornerstone ============ -->
+  <section id="povolenie">
+    <div class="wrap">
+      <p class="eyebrow">Legislatíva</p>
+      <h2>Malý dom a stavebné povolenie: štyri cesty</h2>
+      <p class="lede">
+        Od 1. apríla 2025 platí nový stavebný zákon č. 25/2025 Z. z. Toto sú reálne možnosti —
+        vrátane obmedzenia, ktoré sa v reklamách nespomína.
+      </p>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Prehľad právnych režimov pre umiestnenie malého domu na Slovensku</caption>
+          <thead>
+            <tr>
+              <th scope="col">Cesta</th>
+              <th scope="col">Limity</th>
+              <th scope="col">Čo treba vybaviť</th>
+              <th scope="col">Háčik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Do 25 m²</strong></td>
+              <td>25 m² zastavanej plochy, najmenej 2 m od hranice pozemku</td>
+              <td><strong>Nič</strong> — ani povolenie, ani ohlásenie</td>
+              <td>Stavba <strong>nesmie byť určená na bývanie ani na podnikanie</strong>. Toto je najčastejšie prehliadaný bod.</td>
+            </tr>
+            <tr>
+              <td><strong>Drobná stavba</strong></td>
+              <td>Prízemná, do 50 m² zastavanej plochy, do 5 m výšky</td>
+              <td>Ohlásenie stavebnému úradu. Ak úrad do 30 dní nekoná, platí, že overovaciu doložku vydal.</td>
+              <td>Musí byť doplnkom k hlavnej stavbe na pozemku.</td>
+            </tr>
+            <tr>
+              <td><strong>Registrovaný podvozok (EVČ)</strong></td>
+              <td>Šírka do 2,55 m, výška do 4 m, dĺžka spravidla 6–8 m</td>
+              <td>Typové schválenie / COC, prihlásenie (správny poplatok ~58 €) a PZP</td>
+              <td>Právne ide o vozidlo, nie o stavbu. Obmedzenie na bývanie a podnikanie sa neuplatní.</td>
+            </tr>
+            <tr>
+              <td><strong>Plnohodnotný rodinný dom</strong></td>
+              <td>Bez limitu plochy, na základoch, s prípojkami</td>
+              <td>Stavebné povolenie a kolaudácia</td>
+              <td>Vyžaduje energetický certifikát úrovne <strong>A0</strong>, požiarne, statické a hygienické normy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <p><strong>Naše domy idú cestou drobnej stavby.</strong> Zastavaná plocha 20, 30 a
+          39 m² — všetky pohodlne pod 50 m² limitom. Nie je to stavebné konanie: podáte
+          ohlásenie a ak úrad do 30 dní nekoná, overovacia doložka sa považuje za vydanú.
+          Technické podklady k ohláseniu dodávame ku každému domu v cene.</p>
+        <p><strong>Prečo je 39 m² viac, než to znie.</strong> Do zastavanej plochy sa počíta
+          pôdorys, nie podlahy. Vzorový dom má preto 39 m² zastavanej plochy, ale 65 m²
+          obytnej — prízemie plus podkrovie s vikiermi.</p>
+        <p>Umiestnenie domu na konkrétnom pozemku je vecou stavebníka, teda vás — každý pozemok
+          má iné regulatívy a my nie sme právnici. Radi vám však pomôžeme situáciu overiť na
+          príslušnom stavebnom úrade skôr, než si dom objednáte.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROI CALCULATOR ============ -->
+  <section id="investicia" class="dark-panel">
+    <div class="wrap">
+      <p class="eyebrow" style="color:var(--lime)">Pre investorov</p>
+      <h2>Koľko to zarobí?</h2>
+      <p class="lede" style="color:#CFD9C6">
+        Penzióny, kempingy a majitelia pozemkov kupujú dva až šesť domov naraz. Posuňte
+        jazdcami a pozrite si reálnu návratnosť.
+      </p>
+
+      <div class="calc" id="roi" data-years="roka">
+        <div class="calc-inputs">
+          <div class="field">
+            <label for="c-price">Cena domu (bez DPH) <output id="o-price" for="c-price"></output></label>
+            <input type="range" id="c-price" min="39900" max="109900" step="5000" value="59900">
+          </div>
+          <div class="field">
+            <label for="c-rate">Cena za noc <output id="o-rate" for="c-rate"></output></label>
+            <input type="range" id="c-rate" min="50" max="180" step="5" value="90">
+          </div>
+          <div class="field">
+            <label for="c-occ">Obsadenosť <output id="o-occ" for="c-occ"></output></label>
+            <input type="range" id="c-occ" min="20" max="80" step="1" value="45">
+          </div>
+          <div class="field">
+            <label for="c-cost">Prevádzkové náklady <output id="o-cost" for="c-cost"></output></label>
+            <input type="range" id="c-cost" min="10" max="50" step="1" value="25">
+          </div>
+        </div>
+
+        <div class="calc-out">
+          <div class="calc-row"><span>Obsadených nocí ročne</span> <b id="r-nights"></b></div>
+          <div class="calc-row"><span>Hrubý príjem</span> <b id="r-gross"></b></div>
+          <div class="calc-row"><span>Prevádzka a poplatky</span> <b id="r-running"></b></div>
+          <div class="calc-row"><span>Čistý ročný príjem</span> <b id="r-net"></b></div>
+          <div class="calc-row"><span>Ročný výnos z investície</span> <b id="r-yield"></b></div>
+
+          <div class="calc-headline">
+            <div class="big" id="r-payback"></div>
+            <div class="cap">do splatenia investície</div>
+          </div>
+
+          <p class="calc-note">
+            Orientačný prepočet. Nezahŕňa odpočet DPH (pri platiteľovi DPH sa investícia znižuje
+            o 23 %) ani daňové odpisy — mobilný dom patrí do 2. odpisovej skupiny s dobou
+            odpisovania 6 rokov. Konkrétny prepočet pre váš pozemok vám radi pripravíme.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOW HOUSE ============ -->
+  <section id="vzorovy-dom" class="alt">
+    <div class="wrap">
+      <div class="hero-grid">
+        <img src="/images/interior-evening.webp" width="1600" height="900" class="ph-img" loading="lazy"
+             alt="Otvorená kuchyňa a jedáleň vzorového domu so strešnými oknami a výhľadom do záhrady">
+        <div>
+          <p class="eyebrow">Vzorový dom</p>
+          <h2>Neveríte katalógu? Vyspite sa v ňom.</h2>
+          <p>
+            Konkurencia predáva vizualizácie. My máme postavený dom, v ktorom sa dá stráviť
+            víkend. Prídete, uvaríte si kávu, vyskúšate sprchu, ráno sa pozriete, koľko
+            vyrobili panely.
+          </p>
+          <p>
+            <strong>Ak si do 90 dní od pobytu objednáte dom, cenu pobytu odrátame zo zálohy.</strong>
+            Je to najlacnejší spôsob, ako sa rozhodnúť o investícii za desiatky tisíc eur.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#kontakt">Rezervovať pobyt</a>
+            <a class="btn btn-outline" href="#kontakt">Dohodnúť obhliadku</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIMBER FRAME ============ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Konštrukcia</p>
+      <h2>Drevostavba, nie sendvičový panel</h2>
+      <p class="lede">
+        Väčšina lacných modulov na trhu je z PIR sendvičových panelov. Sú rýchle a lacné na
+        výrobu. My staviame drevený rám — a tu je dôvod.
+      </p>
+
+      <div class="two-col">
+        <div>
+          <h3>Prečo drevo</h3>
+          <ul class="checklist yes">
+            <li><strong>Dýcha.</strong> Difúzne otvorená skladba lepšie zvláda vlhkosť pri celoročnom bývaní.</li>
+            <li><strong>Dá sa opraviť.</strong> Poškodené miesto vymeníte. Sendvičový panel sa opraviť nedá.</li>
+            <li><strong>Vydrží.</strong> Drevostavba je stavba na desaťročia, nie na dobu záruky.</li>
+            <li><strong>Dá sa upraviť.</strong> Nové okno, priečka či rozvod sa dajú doplniť aj o desať rokov.</li>
+            <li><strong>Uhlíková stopa.</strong> Drevo uhlík viaže. Polyuretán ho vypúšťa.</li>
+          </ul>
+        </div>
+        <img src="/images/timber-detail.webp" width="1600" height="900" class="ph-img" loading="lazy"
+             alt="Priznaný drevený trámový strop a schodisko s vysústruženými stĺpikmi">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Časté otázky</p>
+      <h2>Na čo sa nás pýtate najviac</h2>
+
+      <div class="faq">
+        <details open>
+          <summary>Potrebujem stavebné povolenie?</summary>
+          <div>
+            <p>Nie stavebné povolenie, ale ohlásenie. Naše modely majú zastavanú plochu 20, 30
+              a 39 m² — teda pod 50 m² limitom pre drobnú stavbu. Podáte ohlásenie a ak stavebný
+              úrad do 30 dní nekoná, overovacia doložka sa považuje za vydanú. Pri modeli
+              Radhouses 20, umiestnenom najmenej 2 m od hranice pozemku a slúžiacom ako doplnok
+              k existujúcemu domu, nie je potrebné ani ohlásenie. Detailný prehľad nájdete
+              <a href="#povolenie">v tabuľke vyššie</a>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Môžem v ňom bývať celoročne?</summary>
+          <div>
+            <p>Áno, všetky naše domy sú stavané na celoročnú prevádzku — izolácia, trojsklá aj
+              vykurovanie tomu zodpovedajú. Právne je to však iná otázka: ak má dom slúžiť ako
+              plnohodnotný rodinný dom na trvalý pobyt, vyžaduje sa stavebné povolenie,
+              kolaudácia a energetický certifikát A0. Väčšina našich zákazníkov dom používa ako
+              rekreačný objekt, štúdio alebo ubytovaciu jednotku, kde tieto povinnosti nevznikajú.
+              Ktorý režim sa týka vášho zámeru, si spolu overíme pred objednávkou.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Ako dlho trvá výroba?</summary>
+          <div>
+            <p>10 až 12 týždňov od zloženia zálohy, podľa modelu a ročného obdobia. Okná a
+              fotovoltika majú najdlhšie dodacie lehoty, preto ich objednávame hneď po podpise.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Ako sa platí?</summary>
+          <div>
+            <p>V troch splátkach: 30 % pri objednávke, 40 % po dokončení konštrukcie a
+              30 % pri dodaní. Nezačíname stavať skôr, ako je záloha na účte — a vy neplatíte
+              poslednú tretinu skôr, ako dom stojí na vašom pozemku.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Dá sa dom presunúť?</summary>
+          <div>
+            <p>Áno, ale nie svojpomocne. Domy staviame v rozmeroch, ktoré sa zmestia na bežnú
+              cestnú prepravu (šírka do 2,55 m), takže presun je otázkou žeriavu a podvalníka —
+              rovnako ako pri prvom dodaní. Nie je to však operácia na každý rok a náklady na
+              presun sa účtujú samostatne.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Aká je záruka?</summary>
+          <div>
+            <p>5 rokov na nosnú konštrukciu a obálku budovy, 2 roky na zariadenie a spotrebiče.
+              Na každý dom vedieme fotodokumentáciu zo štyroch fáz výroby — viete presne, čo je
+              v stenách.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Dodávate aj do Rakúska, Nemecka a Česka?</summary>
+          <div>
+            <p>Áno. Doprava nad 150 km sa účtuje podľa kilometrov a cenu poviem vopred, nie až
+              vo faktúre. Pri vývoze dodávame aj technickú dokumentáciu k domu v angličtine
+              alebo nemčine.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="kontakt">
+    <div class="wrap">
+      <p class="eyebrow">Kontakt</p>
+      <h2>Napíšte nám</h2>
+      <p class="lede">
+        Odpovedáme do 24 hodín. Ak chcete cenovú ponuku na konkrétny pozemok, napíšte nám
+        kde je — pozrieme sa naň ešte pred prvým telefonátom.
+      </p>
+
+      <div class="contact-grid">
+        <!-- Formspree endpoint. The field named "email" below becomes the Reply-To,
+             so replying in Gmail goes straight back to the enquirer. -->
+        <form name="dopyt" method="post" action="https://formspree.io/f/xgawogoy" novalidate>
+          <input type="hidden" name="_subject" value="Nový dopyt z radhouses.eu">
+          <div class="form-field">
+            <label for="f-name">Meno a priezvisko</label>
+            <input type="text" id="f-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="f-email">E-mail</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="f-phone">Telefón <span style="font-weight:400;color:var(--text-soft)">(nepovinné)</span></label>
+            <input type="tel" id="f-phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <label for="f-model">O čo máte záujem</label>
+            <select id="f-model" name="model">
+              <option>Radhouses 20 — záhradné štúdio</option>
+              <option>Radhouses 30 — prízemný dom</option>
+              <option selected>Radhouses 39 — vzorový dom</option>
+              <option>Viac domov (investičný projekt)</option>
+              <option>Pobyt vo vzorovom dome</option>
+              <option>Zatiaľ neviem, poraďte mi</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="f-msg">Správa</label>
+            <textarea id="f-msg" name="message" placeholder="Kde by dom stál? Máte už pozemok?"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Odoslať dopyt</button>
+          <p style="font-size:.8rem;color:var(--text-soft);margin-top:1rem">
+            Údaje použijeme výhradne na odpoveď na váš dopyt. Nikomu ich neposkytujeme.
+          </p>
+        </form>
+
+        <div>
+          <img src="/images/location.webp" width="1400" height="788" class="ph-img" loading="lazy"
+               alt="Vzorový dom Radhouses 39 so záhradou a terasou za súmraku">
+          <ul class="contact-detail">
+            <li><span>Dopyt</span> Cez kontaktný formulár vedľa</li>
+            <li><span>Vzorový dom</span> Obhliadky po dohode, sedem dní v týždni</li>
+            <li><span>Pobyty</span> Rezervácie cez Airbnb a Booking.com</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn btn-lime" href="#kontakt">Vyžiadať cenník</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 40 40" aria-hidden="true" fill="none">
+          <path d="M20 35V19" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M20 19C20 19 8 18 6 10c0-0 9-4 14 1 5 5 0 8 0 8Z" fill="#fff" opacity=".7"/>
+          <path d="M20 19c0 0 12-1 14-9 0 0-9-4-14 1-5 5 0 8 0 8Z" fill="#fff"/>
+        </svg>
+        <p><strong>Radhouses — Drevené domy</strong><br>
+          Malý dom, ktorý je naozaj hotový.<br>
+          Malé drevostavby na kľúč, vyrobené na Slovensku.</p>
+      </div>
+
+      <div>
+        <h4>Modely</h4>
+        <ul>
+          <li><a href="#modely">Radhouses 20</a></li>
+          <li><a href="#modely">Radhouses 30</a></li>
+          <li><a href="#modely">Radhouses 39</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Informácie</h4>
+        <ul>
+          <li><a href="#cena">Čo je v cene</a></li>
+          <li><a href="#povolenie">Stavebné povolenie</a></li>
+          <li><a href="#investicia">Návratnosť investície</a></li>
+          <li><a href="#vzorovy-dom">Vzorový dom</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="#kontakt">Kontaktný formulár</a></li>
+          <li><a href="/en/" hreflang="en">English</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Radhouses Drevené domy s.r.o.</span>
+      <span>Ceny sú uvedené bez DPH, ak nie je uvedené inak.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": "https://radhouses.eu/#organization",
+      "name": "Radhouses — Drevené domy",
+      "description": "Výrobca malých drevostavieb na kľúč do 50 m² zastavanej plochy. Kompletne dokončené domy s transparentnou cenou.",
+      "url": "https://radhouses.eu/",
+      "priceRange": "€€€",
+      "areaServed": [
+        { "@type": "Country", "name": "Slovensko" },
+        { "@type": "Country", "name": "Rakúsko" },
+        { "@type": "Country", "name": "Česko" },
+        { "@type": "Country", "name": "Nemecko" }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "SK"
+      },
+      "knowsLanguage": ["sk", "en", "de"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://radhouses.eu/#website",
+      "url": "https://radhouses.eu/",
+      "name": "Radhouses — Drevené domy",
+      "inLanguage": "sk",
+      "publisher": { "@id": "https://radhouses.eu/#organization" }
+    },
+    {
+      "@type": "Product",
+      "name": "Radhouses 39 — drevený dom na kľúč",
+      "description": "Dvojpodlažná drevostavba so zastavanou plochou 39 m² a úžitkovou plochou približne 65 m², v režime drobnej stavby. Kompletná kuchyňa, kúpeľňa, podlahy, vykurovanie, fotovoltika, doprava a osadenie v cene.",
+      "brand": { "@id": "https://radhouses.eu/#organization" },
+      "category": "Drevostavba / malý rodinný dom",
+      "offers": {
+        "@type": "Offer",
+        "price": "109900",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false,
+        "availability": "https://schema.org/InStock",
+        "url": "https://radhouses.eu/#modely"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Radhouses 30 — prízemný drevený dom",
+      "description": "Prízemná drevostavba so zastavanou plochou 30 m², so spálňou, kúpeľňou a otvoreným obytným priestorom. Rieši sa ohlásením drobnej stavby.",
+      "brand": { "@id": "https://radhouses.eu/#organization" },
+      "offers": {
+        "@type": "Offer",
+        "price": "59900",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false,
+        "availability": "https://schema.org/InStock",
+        "url": "https://radhouses.eu/#modely"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Potrebujem stavebné povolenie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nie stavebné povolenie, ale ohlásenie. Všetky modely Radhouses majú zastavanú plochu do 50 m² a výšku do 5 m, teda spadajú pod režim drobnej stavby: podáte ohlásenie stavebnému úradu a ak úrad do 30 dní nekoná, overovacia doložka sa považuje za vydanú. Stavba do 25 m² umiestnená najmenej 2 m od hranice pozemku a slúžiaca ako doplnok k existujúcemu domu nevyžaduje ani ohlásenie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Môžem v dome bývať celoročne?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Technicky áno — domy Radhouses sú stavané na celoročnú prevádzku vrátane izolácie, trojskiel a vykurovania. Právne pre trvalý pobyt v plnohodnotnom rodinnom dome platí povinnosť stavebného povolenia, kolaudácie a energetického certifikátu úrovne A0. Pri využití ako rekreačný objekt, štúdio alebo ubytovacia jednotka tieto povinnosti nevznikajú."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ako dlho trvá výroba domu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "10 až 12 týždňov od zloženia zálohy, podľa zvoleného modelu a ročného obdobia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ako prebieha platba?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "V troch splátkach: 30 % pri objednávke, 40 % po dokončení nosnej konštrukcie a 30 % pri dodaní a osadení na pozemku."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Aká je záruka na dom Radhouses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "5 rokov na nosnú konštrukciu a obálku budovy, 2 roky na zariadenie a spotrebiče. Ku každému domu vedieme fotodokumentáciu zo štyroch fáz výroby."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+</body>
 </html>

@@ -1,218 +1,128 @@
-# theradhouses.eu
+# radhouses.eu
 
-The website for **theradhouses.eu**, served from this repository via GitHub Pages.
+The Radhouses website — a static, bilingual, zero-dependency site served from this
+repository via GitHub Pages. Slovak at `/`, English at `/en/`.
 
-Plain static HTML/CSS — no build step, no framework, no dependencies. Every push to
-`main` is published automatically by
+The site content originated in the `web/` directory of
+[wallacewain/Tiny-houses](https://github.com/wallacewain/Tiny-houses), which also holds
+the market research, business plan and financial model behind it. It was rebranded from
+LIPA to Radhouses and repointed from `lipahouse.sk` to `radhouses.eu` on the way in.
+
+```
+index.html                  Slovak home page
+en/index.html               English home page
+404.html                    not-found page (Pages serves it automatically)
+assets/style.css            all styling
+assets/site.js              theme toggle, mobile nav, ROI calculator
+assets/favicon.svg          favicon
+images/                     photography (webp) + camera originals — see images/README.md
+CNAME                       custom domain — GitHub Pages reads this file
+scripts/check-dns.py        audits the live DNS setup
+robots.txt, sitemap.xml     search engines
+.nojekyll                   publish files as-is, skip Jekyll processing
+```
+
+No build step, no framework, no external requests. Every push to `main` is published by
 [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml).
 
-```
-index.html                     home page
-404.html                       not-found page (GitHub Pages serves this automatically)
-assets/styles.css              all styling
-assets/favicon.svg             favicon
-CNAME                          custom domain — GitHub Pages reads this file
-scripts/check-dns.py           verifies the live DNS setup (see step 3)
-robots.txt, sitemap.xml        search engines
-.nojekyll                      publish files as-is, skip Jekyll processing
-```
-
-> The current home page is a placeholder ("the site is being built") and the contact
-> address `hello@theradhouses.eu` is a stand-in. Replace both with the real content
-> and address.
-
 ## Local preview
-
-No tooling needed — open `index.html` in a browser. To preview with correct
-absolute paths (`/assets/...`):
 
 ```bash
 python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
+Serve from the repository root rather than opening `index.html` from disk — the pages use
+absolute paths (`/assets/…`, `/images/…`).
+
 ## Go-live checklist
 
-Two halves: turn on Pages here on GitHub, and point DNS at it from Hostcreators.
-Do the GitHub half first — the DNS half is what takes time to propagate.
+### 1. Create `main`
 
-### 0. Make sure `main` exists
+The repository was empty before this work, so GitHub made a `claude/…` branch the default.
+The deploy workflow only triggers on pushes to `main`. Either rename the default branch to
+`main` under **Settings → General**, or create `main` from this branch and set it as default.
 
-The repository was empty before this commit, so GitHub made the branch this work
-landed on the default branch — there is no `main` yet, and the deploy workflow only
-triggers on pushes to `main`. Fix it either way:
+Until then the site can still be published by hand from the **Actions** tab
+(**Deploy site to GitHub Pages → Run workflow**).
 
-- **Settings → General → Default branch → rename** the current default to `main`, or
-- create `main` from this branch and set it as the default.
+### 2. Enable Pages
 
-Until then, the site can still be published by running the workflow by hand from the
-**Actions** tab (**Deploy site to GitHub Pages → Run workflow**).
+This step has to be done by hand, once, by someone with admin on the repository. The
+workflow cannot do it for you: creating a Pages site requires admin rights, and
+`GITHUB_TOKEN` does not have them even with `pages: write`. Until it is done, every run
+fails at `configure-pages` with *"Get Pages site failed … Not Found"*.
 
-### 1. Enable GitHub Pages (one-time, in this repo)
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions.** Not "Deploy from
+   a branch" — this repo deploys through the workflow.
+2. **Settings → Pages → Custom domain** should read `radhouses.eu`, picked up from `CNAME`.
+3. Leave **Enforce HTTPS** unchecked until DNS resolves and GitHub has issued the
+   certificate, then come back and tick it.
 
-1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
-   Not "Deploy from a branch" — the workflow in this repo uses the Actions source.
-2. Push to `main` (or run the workflow manually from the **Actions** tab). Once it
-   goes green the site is live at `https://poklembarado-del.github.io/Theradhouses/`.
-3. **Settings → Pages → Custom domain** should already read `theradhouses.eu`,
-   picked up from the `CNAME` file. If it's blank, type it in and press Save.
-4. Leave **Enforce HTTPS** unchecked for now — GitHub greys it out until DNS
-   resolves and it has issued a certificate. Come back and tick it in step 3 below.
+### 3. DNS
 
-### 2. Point DNS at GitHub
+DNS is managed at Hostcreators. The apex records are in place and verified:
 
-**Current state of the domain (checked against the live `.eu` registry):
-`theradhouses.eu` is not delegated at all — it returns `NXDOMAIN`, and the only
-thing answering for it is the registry's own `si.dns.eu`.** No nameservers are
-set, so there is no zone, no records, and no mail routing to preserve. Nothing
-below can break an existing service.
-
-GitHub Pages is not a DNS host — it has no nameservers to hand out. It needs `A`
-and `CNAME` **records**, which have to live in a DNS zone somewhere. So the first
-question is where that zone will be.
-
-#### 2a. Where the zone lives
-
-Hostcreators' panel exposes only four nameserver fields (`ns1`–`ns4`). That is the
-registrar half of the job: it decides *who* answers DNS for the domain, not *what*
-they answer. Two ways forward.
-
-**Path A — keep DNS at Hostcreators.** They do run their own nameservers. Fill the
-four fields with:
-
-```
-ns1.hostcreators.eu
-ns2.hostcreators.eu
-ns3.hostcreators.eu
-ns4.hostcreators.eu
-```
-
-Save, then look for a **DNS / zone editor** in the panel. If one appears, create
-the records in 2b there and you are done — no third party involved. Many
-registrars only unlock the zone editor once the domain points at their own
-nameservers, so this is worth trying first. If no editor appears (common when the
-domain was bought without a hosting package), ask their support whether DNS
-management is included — and if it isn't, take path B.
-
-**Path B — delegate DNS to a free DNS host.** Put *their* nameservers in the
-`ns1`–`ns4` fields instead, then create the records in 2b in that provider's panel.
-Any of these work; pick one:
-
-| Provider | Nameservers to enter | Notes |
+| Type | Host | Value |
 | --- | --- | --- |
-| **Cloudflare** (recommended) | the two it assigns you, e.g. `dana.ns.cloudflare.com` / `rex.ns.cloudflare.com` | Free. Best UI and docs. Add the domain at dash.cloudflare.com and it tells you your exact pair — they are per-account, don't copy the example. Leave `ns3`/`ns4` blank. |
-| **deSEC** | `ns1.desec.io`, `ns2.desec.org` | Free, EU non-profit, DNSSEC on by default. Good fit for a `.eu` domain if you'd rather keep DNS in Europe. Leave `ns3`/`ns4` blank. |
-| **Hurricane Electric** | `ns1.he.net` … `ns5.he.net` | Free, no frills, and fills all four fields exactly. |
+| A | *(blank)* | 185.199.108.153 |
+| A | *(blank)* | 185.199.109.153 |
+| A | *(blank)* | 185.199.110.153 |
+| A | *(blank)* | 185.199.111.153 |
+| AAAA | *(blank)* | 2606:50c0:8000::153 |
+| AAAA | *(blank)* | 2606:50c0:8001::153 |
+| AAAA | *(blank)* | 2606:50c0:8002::153 |
+| AAAA | *(blank)* | 2606:50c0:8003::153 |
+| CNAME | `www` | `poklembarado-del.github.io.` |
 
-Only two nameservers is completely normal — leaving `ns3`/`ns4` empty is fine.
+Notes on the Hostcreators panel: the **Host** field appears as "Guest" and the **A** record
+type as "And" — both are machine-translation artefacts. The field appends `.radhouses.eu`
+for you, so leave it blank for the apex and enter just `www` for the subdomain. Never type
+the full domain in there or you get `radhouses.eu.radhouses.eu`.
 
-> **If you use Cloudflare**, set the records to **DNS only** (grey cloud, not
-> orange) at first. GitHub cannot validate the domain or issue its certificate
-> through Cloudflare's proxy, and proxying with SSL/TLS mode "Flexible" causes a
-> redirect loop. Once the site is live on HTTPS you may switch the proxy on,
-> provided SSL/TLS mode is **Full (strict)**.
-
-#### 2b. The records to create
-
-Whichever panel you land in, create these.
-
-**Filling in the "Host" / "Name" field.** It takes the part of the name to the left
-of the domain, not the whole thing: `@` means the domain itself
-(`theradhouses.eu`), and `www` means `www.theradhouses.eu` — the panel appends the
-domain for you. Check which convention this panel uses by looking at the `SOA`/`NS`
-rows it created automatically: if their Host column reads `@` or is blank, use `@`;
-if it reads `theradhouses.eu.` with a trailing dot, this panel wants fully-qualified
-names, so enter `theradhouses.eu.` and `www.theradhouses.eu.` instead.
-
-Do not type `theradhouses.eu` without a trailing dot into a Host field that appends
-the domain — that silently creates `theradhouses.eu.theradhouses.eu`, which resolves
-nowhere and looks correct in the records table. `@` is the safer choice when unsure.
-
-Each A record is its own row: four rows, all with Host `@`, one IP each.
-
-**Apex domain `theradhouses.eu` — four A records** (host/name field: `@`, or blank,
-or `theradhouses.eu.` depending on the panel):
-
-| Type | Name | Value           | TTL  |
-| ---- | ---- | --------------- | ---- |
-| A    | @    | 185.199.108.153 | 3600 |
-| A    | @    | 185.199.109.153 | 3600 |
-| A    | @    | 185.199.110.153 | 3600 |
-| A    | @    | 185.199.111.153 | 3600 |
-
-**Optional but recommended — four AAAA records** for IPv6:
-
-| Type | Name | Value               | TTL  |
-| ---- | ---- | ------------------- | ---- |
-| AAAA | @    | 2606:50c0:8000::153 | 3600 |
-| AAAA | @    | 2606:50c0:8001::153 | 3600 |
-| AAAA | @    | 2606:50c0:8002::153 | 3600 |
-| AAAA | @    | 2606:50c0:8003::153 | 3600 |
-
-**`www` subdomain — one CNAME:**
-
-| Type  | Name | Value                        | TTL  |
-| ----- | ---- | ---------------------------- | ---- |
-| CNAME | www  | poklembarado-del.github.io.  | 3600 |
-
-(Note the trailing dot; some panels want it, some add it for you. GitHub then
-redirects `www.theradhouses.eu` → `theradhouses.eu` because `CNAME` holds the apex.)
-
-**Delete any conflicting records the panel creates for you:** some hosts drop in a
-default `A` record on `@` pointing at a parking page, or a `CNAME` on `www`. Two
-sets of A records on the apex will make the site load intermittently.
-
-**GitHub Pages does not host email.** The domain has no `MX` records today, so
-nothing breaks — but it also means `hello@theradhouses.eu` will not receive mail
-until you set up a mailbox somewhere and add its `MX` (and `SPF`/`DKIM` `TXT`)
-records in whichever zone you chose above. That is separate from the website.
-
-The IPs above were verified against GitHub's live DNS. If a record is ever
-rejected, cross-check the current list at
-<https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site>.
-
-### 3. Verify, then force HTTPS
-
-Control panels are an awkward place to audit a zone — records are paginated, the
-Host column is ambiguous, and a leftover parking record looks just like one you
-added. So check from the outside instead:
+Verify from outside the control panel:
 
 ```bash
 python3 scripts/check-dns.py
 ```
 
-It reads the zone **directly from the authoritative nameservers** — what the
-internet actually sees, with no resolver caching and no panel rendering in the way —
-and reports, in order: whether the domain is delegated at all, which of the four
-GitHub IPs are present, any *extra* A/AAAA records that shouldn't be there (the
-parking-record conflict), whether `www` is a CNAME to the right target, whether a
-doubled `theradhouses.eu.theradhouses.eu` name got created, and whether the site
-answers on HTTPS. It exits non-zero while anything is wrong, and needs no
-dependencies beyond Python 3.
+It reads the zone directly from the authoritative nameservers and reports what is missing.
+It exits non-zero while anything is wrong and needs no dependencies beyond Python 3.
 
-Run it after each change to the zone. If it says the domain has no nameservers,
-nothing else can be diagnosed yet — that's step 2a, and it gates everything.
+Leave the `smtp`/`imap`/`pop3`/`ssh` CNAMEs, the `_autodiscover` SRV and the SPF/DMARC TXT
+records alone — that is the mail setup, unrelated to Pages.
 
-The equivalent by hand, if you'd rather:
+## Before it is really live
 
-```bash
-dig +short NS theradhouses.eu       # expect the nameservers you entered — check this first
-dig +short theradhouses.eu          # expect the four 185.199.x.153 addresses
-dig +short www.theradhouses.eu      # expect poklembarado-del.github.io.
-curl -sI https://theradhouses.eu    # expect HTTP/2 200
-```
+1. **Fill in the real contact details** — phone, email, IČO/DIČ in the footer of both pages.
+   They are currently zeroed placeholders.
+2. **Check the prices** against the financial model in the source repository.
+3. **Reshoot two photo gaps** — see [`images/README.md`](images/README.md).
 
-Work through those in order. If the `NS` line is empty the delegation hasn't taken
-effect yet and the rest cannot possibly work.
+## The contact form
 
-DNS usually takes 15–60 minutes and can take up to 24 hours.
+Both pages post to the Formspree endpoint `https://formspree.io/f/xgawogoy`, which emails
+submissions to `poklembarado@gmail.com`. Recipients, validation and spam settings are
+changed in the Formspree dashboard, not here.
 
-Then go back to **Settings → Pages** and tick **Enforce HTTPS**. GitHub issues a
-free Let's Encrypt certificate once DNS checks out; if the checkbox is still
-greyed out, DNS hasn't fully propagated — wait and revisit.
+The two forms share one field set — `name`, `email`, `phone`, `model`, `message` — so
+submissions read the same whichever language they came from. `email` is used as the
+Reply-To, so replying in Gmail goes back to the enquirer.
+
+Spam filtering is left entirely to Formspree's Formshield.
+
+**Do not add a `_gotcha` honeypot here.** One was tried and removed: it was hidden with
+`position:absolute;left:-9999px`, which Chrome's autofill still treats as a visible field,
+so autofill populated it and Formspree classified genuine enquiries as spam. A missed spam
+message costs nothing; a silently discarded customer enquiry costs a sale. If a honeypot is
+ever reintroduced it must use `display:none`, which autofill skips -- but Formshield already
+covers this, so the field earns no protection worth the risk.
+
+Do not set Formspree to send *from* an `@radhouses.eu` address. The domain publishes
+`DMARC p=reject`, so mail claiming to be from it but sent by Formspree would be rejected
+outright.
 
 ## Deploying changes
 
-Push to `main`. The workflow rebuilds and publishes within about a minute; watch it
-in the **Actions** tab. Never delete the `CNAME` file — removing it unsets the
-custom domain in the Pages settings and the site drops back to the `github.io` URL.
+Push to `main`; the workflow publishes within about a minute. Never delete `CNAME` —
+removing it unsets the custom domain and the site drops back to the `github.io` URL.
